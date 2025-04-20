@@ -1,32 +1,130 @@
-// Copyright (c) 2022 The ZMK Contributors
-// SPDX-License-Identifier: MIT
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <behaviors.dtsi>
 
-// Home row mods macro
-#define HRML(k1,k2,k3,k4) &ht LSHFT k1  &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
-#define HRMR(k1,k2,k3,k4) &ht RGUI k1  &ht RCTRL k2  &ht RALT k3  &ht RSHFT k4
+#define COLEMAK 0
+#define NAV 1
+#define NUM 2
+#define SYM 3
+#define FUN 4
 
-/ {
-    behaviors {
-        ht: hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <220>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <100>;
-            bindings = <&kp>, <&kp>;
+/* krita base */
+#define KRB 5
+
+/* play */
+#define PLAY 6
+
+
+&mt {
+  flavor = "tap-preferred";
+  tapping_term_ms = <200>;
+  quick_tap_ms = <75>;
+};
+
+
+/ { 
+
+    combos {
+        compatible = "zmk,combos";
+        combo_caps_word {
+            timeout-ms = <100>;
+            key-positions = <20 29>;
+            bindings = <&caps_word>;
         };
-    };
+        combo_esc {
+            timeout-ms = <150>;
+            key-positions = <12 13 16 17>;
+            bindings = <&kp ESC>;
+        };
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
+        // (
+        combo_lpar {
+            timeout-ms = <150>;
+            key-positions = <4 14>;
+            bindings = <&kp LPAR>;
+        };
+
+        // )
+        combo_rpar {
+            timeout-ms = <150>;
+            key-positions = <5 15>;
+            bindings = <&kp RPAR>;
+        };
+
+        // {
+        combo_lcurly {
+            timeout-ms = <150>;
+            key-positions = <3 13>;
+            bindings = <&kp LBRC>;
+        };
+        // }
+        combo_rcurly {
+            timeout-ms = <150>;
+            key-positions = <6 16>;
+            bindings = <&kp RBRC>;
+        };
+
+        // [
+        combo_lsquare {
+            timeout-ms = <150>;
+            key-positions = <13 23>;
+            bindings = <&kp LBKT>;
+        };
+
+        // ]
+        combo_rsquare {
+            timeout-ms = <150>;
+            key-positions = <16 26>;
+            bindings = <&kp RBKT>;
+        };
+
+        // <
+        combo_less_than {
+            timeout-ms = <150>;
+            key-positions = <14 24>;
+            bindings = <&kp LT>;
+        };
+
+        // >
+        combo_greater_than {
+            timeout-ms = <150>;
+            key-positions = <15 25>;
+            bindings = <&kp GT>;
+        };
+
+        combo_minus {
+            timeout-ms = <150>;
+            key-positions = <2 3 6 7>;
+            bindings = <&kp MINUS>;
+        };
+        combo_under {
+            timeout-ms = <150>;
+            key-positions = <22 23 26 27>;
+            bindings = <&kp UNDER>;
+        };
+        combo_ble {
+            timeout-ms = <20>;
+            key-positions = <0 1>;
+            bindings = <&out OUT_BLE>;
+        };
+        combo_krita {
+            timeout-ms = <100>;
+            key-positions = <0 10 20>;
+            bindings = <&tog KRB>;
+        };
+        combo_draw {
+            timeout-ms = <100>;
+            key-positions = <9 19 29>;
+            bindings = <&tog PLAY>;
         };
     };
 
@@ -34,70 +132,65 @@
         compatible = "zmk,keymap";
         default_layer {
             bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
-            &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ ' "      │
-            HRML(A,        S,         D,         F)     &kp G          &kp H      HRMR(J,        K,         L,        SQT)
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
-            &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &lt 2 TAB   &kp ENTER     &kp SPACE  &lt 1 BSPC
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
+                  &kp Q      &kp W       &kp F        &kp P         &kp G                  &kp J              &kp L           &kp U        &kp Y        &kp SCLN
+                  &kp A      &kp R       &lt FUN S    &lt NAV T     &kp D                  &kp H              &lt SYM N       &lt NUM E    &kp I        &kp O
+                  &kp Z      &kp X       &kp C        &kp V         &kp B                  &kp K              &kp M           &kp CMMA     &kp DOT      &kp FSLH
+                                                      &mt LALT TAB  &mt LGUI SPC           &mt LSHIFT RET     &mt LCTRL BSPC
+                >;
         };
 
-        right_layer {
+        nav_layer {
             bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ INSERT   │  1       │  2       │  3       │          │   │ HOME     │ PAGE DN  │ PAGE UP  │ END      │  :       │
-            &kp INS    &kp N1     &kp N2     &kp N3     &trans         &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp COLON
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ DELETE   │  4       │  5       │  6       │          │   │ LEFT     │ DOWN     │ UP       │ RIGHT    │  ;       │
-            &kp DEL    &kp N4     &kp N5     &kp N6     &trans         &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT   &kp SEMI
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ CAPS     │  7       │  8       │  9       │  0       │   │          │          │          │          │          │
-           &caps_word  &kp N7     &kp N8     &kp N9     &kp N0         &trans     &trans     &trans     &trans     &trans
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &kp ESC        &trans     &trans
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
+                &bt BT_CLR   &trans &trans &bootloader &sys_reset           &trans      &kp LBRC   &kp RBRC &kp LPAR    &kp RPAR
+                &bt BT_SEL 0 &trans &trans &trans      &trans               &kp LEFT    &kp DOWN   &kp UP   &kp RIGHT   &trans
+                &bt BT_SEL 1 &trans &trans &trans      &trans               &trans      &kp LBKT   &kp RBKT &trans      &trans
+                                           &trans      &trans               &trans      &kp BSPC
+                >;
         };
 
-        left_layer {
+        num_layer {
             bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│          │  [       │  {       │  }       │          │   │  ^       │  (       │  )       │  ]       │  ~       │
-            &trans     &kp LBKT   &kp LBRC   &kp RBRC   &trans         &kp CARET  &kp LPAR   &kp RPAR   &kp RBKT   &kp TILDE
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  !       │  @       │  #       │  $       │  %       │   │  *       │  -       │  =       │  \       │  `       │
-            &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp ASTRK  &kp MINUS  &kp EQUAL  &kp BSLH   &kp GRAVE
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │   │  &       │  _       │  +       │  │       │          │
-            &trans     &trans     &trans     &trans     &trans         &kp AMPS   &kp UNDER  &kp PLUS   &kp PIPE   &trans
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &trans         &trans     &trans
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
+                &trans     &kp F7 &kp F8 &kp F9 &trans                &trans    &trans   &trans &trans    &trans
+                &kp SQT    &kp F4 &kp F5 &kp F6 &kp EQUAL             &trans    &trans   &trans &trans    &trans
+                &kp GRAVE  &kp F1 &kp F2 &kp F3 &kp BSLH              &trans    &trans   &trans &trans    &trans
+                                         &trans &trans                &trans    &trans
+                >;
+       };
+
+       sym_layer {
+            bindings = <
+                &kp LS(Q) &kp LS(Z) &kp STAR  &kp AMPS  &trans                &sys_reset &bootloader   &trans &trans    &trans
+                &kp DQT   &kp CARET &kp PRCNT &kp DLLR  &kp KP_PLUS           &trans     &trans        &trans &trans    &trans
+                &kp TILDE &kp HASH  &kp AT    &kp EXCL  &kp PIPE              &trans     &trans        &trans &trans    &trans
+                                              &kp LPAR  &kp RPAR              &trans     &trans
+                >;
         };
 
-        tri_layer {
+       fun_layer {
             bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │
-           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &trans     &trans     &trans     &trans    &sys_reset
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│
-          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &trans     &trans     &trans     &trans    &bootloader
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &trans
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &trans         &trans     &trans
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
+                &trans &trans &trans &trans &trans        &trans   &kp N7    &kp N8    &kp N9    &trans
+                &trans &trans &trans &trans &trans        &kp BSPC &kp N4    &kp N5    &kp N6    &trans
+                &trans &trans &trans &trans &trans        &trans   &kp N1    &kp N2    &kp N3    &trans
+                                     &trans &trans        &trans   &kp N0
+                >;
         };
+
+        krita_base_layer {
+            bindings = <
+                &kp M      &trans &kp BSLH  &kp LBKT      &kp RBKT       &trans    &trans   &trans &trans    &trans
+                &trans     &trans &kp F     &kp I         &kp O          &trans    &trans   &trans &trans    &trans
+                &kp LC(S)  &trans &kp P     &kp K         &kp L          &trans    &trans   &trans &trans    &trans
+                                            &kp LS(LC(Z)) &kp LC(Z)      &trans    &trans
+                >;
+       };
+
+        draw {
+            bindings = <
+                &kp Q   &kp W  &kp E     &kp R         &kp T          &kp Y     &kp U         &kp I          &kp O      &kp P
+                &kp N1  &kp S  &kp N3    &mt LCTRL F   &kp G          &kp H     &mt LCTRL J   &mt RSHIFT K   &mt LALT L &mt LGUI SCLN
+                &kp Z   &kp X  &kp C     &kp V         &kp B          &kp M     &kp LEFT      &kp DOWN       &kp RIGHT  &trans
+                                         &kp R         &kp U          &kp RET   &kp BSPC
+                >;
+       };
     };
 };
