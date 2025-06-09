@@ -70,8 +70,17 @@
             bindings = <
 &trans               &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &kp NUM_5    &kp LG(LBKT)  &kp LC(LS(TAB))  &kp RC(TAB)   &kp LG(RBKT)  &kp BACKSPACE
 &kp F1               &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &kp DEL      &kp LEFT      &kp DOWN         &kp UP        &kp RIGHT     &kp ENTER
-&td LG(GRAVE) GRAVE  &mkp RCLK       &msc SCRL_UP    &msc SCRL_DOWN   &trans       &mkp LCLK     &kp PG_DN        &kp K_VOL_DN  &trans        &trans
+&td LG(GRAVE) GRAVE  &mkp RCLK       &msc SCRL_UP    &msc SCRL_DOWN   &trans       &mkp LCLK     &kp PG_DN        &kp K_VOL_DN  &trans        &to 4
                                                      &to 0            &trans       &sk RALT      &to 1
+            >;
+        };
+
+        Reset {
+            bindings = <
+&trans  &trans  &trans  &trans  &sys_reset    &sys_reset  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans        &trans      &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans        &trans      &trans  &trans  &trans  &trans
+                        &trans  &trans        &trans      &trans
             >;
         };
     };
