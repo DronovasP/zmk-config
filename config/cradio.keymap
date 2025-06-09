@@ -41,19 +41,19 @@
 
         default_layer {
             bindings = <
-&kp Q  &kp W  &kp F           &kp P            &kp G                         &kp J              &kp L            &kp U            &kp Y         &kp SEMICOLON
-&kp A  &kp R  &hm LEFT_ALT S  &hm LEFT_GUI T   &kp D                         &kp H              &hm RIGHT_GUI N  &hm RIGHT_ALT E  &kp I         &kp O
-&kp Z  &kp X  &kp C           &kp V            &kp B                         &kp K              &kp M            &td MINUS COMMA  &td EXCL DOT  &td UNDERSCORE SLASH
-                              &sk LEFT_SHIFT   &mt LC(LS(LEFT_ALT)) SPACE    &sk RIGHT_CONTROL  &to 1
+&kp Q  &kp W  &kp F           &kp P           &kp G                         &kp J              &kp L            &kp U            &kp Y         &kp SEMICOLON
+&kp A  &kp R  &hm LEFT_ALT S  &hm LEFT_GUI T  &kp D                         &kp H              &hm RIGHT_GUI N  &hm RIGHT_ALT E  &kp I         &kp O
+&kp Z  &kp X  &kp C           &kp V           &kp B                         &kp K              &kp M            &td MINUS COMMA  &td EXCL DOT  &td UNDERSCORE SLASH
+                              &sk LEFT_SHIFT  &mt LC(LS(LEFT_ALT)) SPACE    &sk RIGHT_CONTROL  &to 1
             >;
         };
 
         left_layer {
             bindings = <
-&kp ESC    &kp AT_SIGN  &kp HASH      &kp DLLR          &kp PRCNT     &kp CARET  &kp AMPS  &kp STAR  &kp SEMI  &kp BACKSPACE
-&kp TAB    &kp EQUAL    &kp LA(RBKT)  &kp LA(LS(RBKT))  &kp SQT       &kp BSLH   &kp LBRC  &kp RBRC  &kp PIPE  &kp ENTER
-&kp TILDE  &kp LA(N3)   &kp LA(LBKT)  &kp LA(LS(LBKT))  &kp DQT       &kp LBKT   &kp LPAR  &kp RPAR  &kp RBKT  &to 3
-                                      &sk LSHIFT        &to 0         &sk RALT   &to 2
+&kp ESC    &kp AT_SIGN  &kp HASH      &kp DLLR          &kp PRCNT    &kp CARET  &kp AMPS  &kp STAR  &kp SEMI  &kp BACKSPACE
+&kp TAB    &kp EQUAL    &kp LA(RBKT)  &kp LA(LS(RBKT))  &kp SQT      &kp BSLH   &kp LBRC  &kp RBRC  &kp PIPE  &kp ENTER
+&kp TILDE  &kp LA(N3)   &kp LA(LBKT)  &kp LA(LS(LBKT))  &kp DQT      &kp LBKT   &kp LPAR  &kp RPAR  &kp RBKT  &to 3
+                                      &sk LSHIFT        &to 0        &sk RALT   &to 2
             >;
         };
 
@@ -77,10 +77,10 @@
 
         Reset {
             bindings = <
-&trans  &trans  &trans  &trans  &sys_reset    &sys_reset  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans        &trans      &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans        &trans      &trans  &trans  &trans  &trans
-                        &trans  &trans        &trans      &trans
+&trans  &trans  &trans  &trans  &bootloader    &bootloader  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans         &trans       &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans         &trans       &trans  &trans  &trans  &trans
+                        &trans  &trans         &trans       &trans
             >;
         };
     };
