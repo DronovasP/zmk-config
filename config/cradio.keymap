@@ -41,10 +41,10 @@
 
         default_layer {
             bindings = <
-&kp Q  &kp W  &kp F           &kp P                       &kp G             &kp J              &kp L            &kp U            &kp Y         &kp SEMICOLON
-&kp A  &kp R  &hm LEFT_ALT S  &hm LEFT_GUI T              &kp D             &kp H              &hm RIGHT_GUI N  &hm RIGHT_ALT E  &kp I         &kp O
-&kp Z  &kp X  &kp C           &kp V                       &kp B             &kp K              &kp M            &td MINUS COMMA  &td EXCL DOT  &td UNDERSCORE SLASH
-                              &mt LC(LS(LEFT_ALT)) SPACE  &sk LEFT_SHIFT    &sk RIGHT_CONTROL  &to 1
+&kp Q  &kp W  &kp F           &kp P            &kp G                         &kp J              &kp L            &kp U            &kp Y         &kp SEMICOLON
+&kp A  &kp R  &hm LEFT_ALT S  &hm LEFT_GUI T   &kp D                         &kp H              &hm RIGHT_GUI N  &hm RIGHT_ALT E  &kp I         &kp O
+&kp Z  &kp X  &kp C           &kp V            &kp B                         &kp K              &kp M            &td MINUS COMMA  &td EXCL DOT  &td UNDERSCORE SLASH
+                              &sk LEFT_SHIFT   &mt LC(LS(LEFT_ALT)) SPACE    &sk RIGHT_CONTROL  &to 1
             >;
         };
 
@@ -53,7 +53,7 @@
 &kp ESC    &kp AT_SIGN  &kp HASH      &kp DLLR          &kp PRCNT     &kp CARET  &kp AMPS  &kp STAR  &kp SEMI  &kp BACKSPACE
 &kp TAB    &kp EQUAL    &kp LA(RBKT)  &kp LA(LS(RBKT))  &kp SQT       &kp BSLH   &kp LBRC  &kp RBRC  &kp PIPE  &kp ENTER
 &kp TILDE  &kp LA(N3)   &kp LA(LBKT)  &kp LA(LS(LBKT))  &kp DQT       &kp LBKT   &kp LPAR  &kp RPAR  &kp RBKT  &to 3
-                                      &to 0             &sk LSHIFT    &sk RALT   &to 2
+                                      &sk LSHIFT        &to 0         &sk RALT   &to 2
             >;
         };
 
@@ -62,7 +62,7 @@
 &kp ESC  &kp C_PP      &kp C_PREV            &kp C_NEXT            &kp UNDER    &kp MINUS  &kp N7  &kp N8  &kp N9  &kp BACKSPACE
 &kp TAB  &trans        &kp C_VOL_DN          &kp C_VOL_UP          &kp PLUS     &kp EQUAL  &kp N4  &kp N5  &kp N6  &kp ENTER
 &none    &kp ASTERISK  &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &kp DOT      &kp N0     &kp N1  &kp N2  &kp N3  &to 3
-                                             &to 0                 &sk LGUI     &sk RALT   &to 2
+                                             &sk LGUI              &to 0        &sk RALT   &to 2
             >;
         };
 
@@ -71,7 +71,7 @@
 &trans               &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &kp NUM_5    &kp LG(LBKT)  &kp LC(LS(TAB))  &kp RC(TAB)   &kp LG(RBKT)  &kp BACKSPACE
 &kp F1               &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &kp DEL      &kp LEFT      &kp DOWN         &kp UP        &kp RIGHT     &kp ENTER
 &td LG(GRAVE) GRAVE  &mkp RCLK       &msc SCRL_UP    &msc SCRL_DOWN   &trans       &mkp LCLK     &kp PG_DN        &kp K_VOL_DN  &trans        &to 4
-                                                     &to 0            &trans       &sk RALT      &to 1
+                                                     &trans           &to 0        &sk RALT      &to 1
             >;
         };
 
