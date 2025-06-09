@@ -40,14 +40,14 @@
         keymap {
                 compatible = "zmk,keymap";
                 
-       		default_layer {
-		bindings = <
-		&kp Y &kp C &kp L &kp M &kp K 						&kp Z &kp F  &kp U    &td MINUS COMMA  &kp BKSP 
-		&kp I &kp S &hm LALT R &hm LGUI T &kp G 			       	&kp P &hm RGUI N &hm RALT E &kp A &kp O
-		&kp Q &kp V &kp W &kp D &kp J				        &kp B &kp H  &td UNDERSCORE SLASH &td EXCL DOT &kp X
-          				&mt LC(LS(LALT)) SPC &sk LSHIFT  				&sk RCTRL &to 1
-		>;
-		};
+        default_layer {
+            bindings = <
+                  &kp Q      &kp W       &kp F        &kp P             &kp G                  &kp J              &kp L           &kp U        &kp Y        &kp SCLN
+                  &kp A      &kp R       &lt FUN S    &lt NAV T         &kp D                  &kp H              &lt SYM N       &lt NUM E    &kp I        &kp O
+                  &kp Z      &kp X       &kp C        &kp V             &kp B                  &kp K              &kp M           &kp CMMA     &kp DOT      &kp FSLH
+                                                      &mt LC(LS(LALT))  &sk LSHIFT             &sk RCTRL          &to 1
+                >;
+        };
 
        		left_layer {
 		bindings = <
