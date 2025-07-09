@@ -66,14 +66,14 @@
             >;
         };
 
-        tri_layer {
-            bindings = <
-&trans               &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &kp NUM_5    &kp LG(LBKT)  &kp LC(LS(TAB))  &kp RC(TAB)   &kp LG(RBKT)  &kp BACKSPACE
-&kp F1               &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &kp DEL      &kp LEFT      &kp DOWN         &kp UP        &kp RIGHT     &kp ENTER
-&td LG(GRAVE) GRAVE  &mkp RCLK       &msc SCRL_UP    &msc SCRL_DOWN   &trans       &mkp LCLK     &kp PG_DN        &kp K_VOL_DN  &trans        &to 4
-                                                     &to 0            &trans       &sk RALT      &to 1
-            >;
-        };
+       tri_layer {
+   	    bindings = <
+&trans               &kp LC(LA(N1))  &kp LC(LA(UP))    &kp LC(LA(N2))    &trans           &kp LC(LA(N6))    &kp LC(TAB)      &kp RC(TAB)      &kp LC(LA(N7))  &kp BACKSPACE
+&kp F1               &kp LC(LA(LEFT)) &kp LC(LA(DOWN)) &kp LC(LA(RIGHT)) &kp DEL          &kp LC(LA(H))     &kp LC(LA(J))    &kp LC(LA(K))    &kp LC(LA(L))   &kp ENTER
+&kp LG(GRAVE)        &trans          &kp LC(LA(GRAVE)) &trans            &trans           &kp LC(LA(M))     &kp LC(LA(N))    &kp LC(LA(E))    &trans          &to 4
+                                                    &to 0             &kp LC(LA(BACKTICK)) &sk RALT     &to 1
+    >;
+};
 
         Reset {
             bindings = <
