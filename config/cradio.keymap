@@ -66,12 +66,12 @@
             >;
         };
 
-       tri_layer {
-   	    bindings = <
-&trans               &kp LC(LA(N1))  &kp LC(LA(UP))    &kp LC(LA(N2))    &trans           &kp LC(LA(N6))    &kp LC(TAB)      &kp RC(TAB)      &kp LC(LA(N7))  &kp BACKSPACE
-&kp F1               &kp LC(LA(LEFT)) &kp LC(LA(DOWN)) &kp LC(LA(RIGHT)) &kp DEL          &kp LC(LA(H))     &kp LC(LA(J))    &kp LC(LA(K))    &kp LC(LA(L))   &kp ENTER
-&kp LG(GRAVE)        &trans          &kp LC(LA(GRAVE)) &trans            &trans           &kp LC(LA(M))     &kp LC(LA(N))    &kp LC(LA(E))    &trans          &to 4
-                                                    &to 0             &kp LC(LA(BACKTICK)) &sk RALT     &to 1
+      tri_layer {
+    bindings = <
+&kp LC(LA(N1))  &kp LC(LA(N2))  &kp LC(LA(N3))  &kp LC(LA(N4))  &kp LC(LA(N5))  &kp LC(LA(N6))  &kp LC(TAB)     &kp RC(TAB)     &kp LC(LA(N7))  &kp BACKSPACE
+&kp F1          &kp LC(LA(LEFT)) &kp LC(LA(DOWN)) &kp LC(LA(RIGHT)) &kp DEL       &kp LC(LA(H))   &kp LC(LA(J))   &kp LC(LA(K))   &kp LC(LA(L))   &kp ENTER
+&kp GRAVE       &trans          &kp LC(LA(GRAVE)) &trans         &trans         &kp LC(LA(M))   &kp LC(LA(N))   &kp LC(LA(E))   &trans         &to 4
+                                                &to 0           &kp LC(LA(GRAVE)) &sk RALT      &to 1
     >;
 };
 
