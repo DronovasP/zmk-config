@@ -20,14 +20,14 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: cradio_left_rc
+    shield: cradio_left
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
   - board: nice_nano_v2
-    shield: cradio_right_rc
+    shield: cradio_right
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
   - board: nice_nano_v2
-    shield: cradio_left_lc
+    shield: cradio_left
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
   - board: nice_nano_v2
-    shield: cradio_right_lc
+    shield: cradio_right
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
