@@ -3,18 +3,17 @@ manifest:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: zmk-adaptive-key
-      path: modules/zmk/adaptive-key
+      url-base: https://github.com/urob/zmk-adaptive-key
     - name: zmk-auto-layer
-      path: modules/zmk/auto-layer
+      url-base: https://github.com/urob/zmk-auto-layer
     - name: zmk-helpers
-      path: modules/zmk/helpers
+      url-base: https://github.com/urob/zmk-helpers
     - name: zmk-leader-key
-      path: modules/zmk/leader-key
+      url-base: https://github.com/urob/zmk-leader-key
     - name: zmk-tri-state
-      path: modules/zmk/tri-state
+      url-base: https://github.com/dhruvinsh/zmk-tri-state
     - name: zmk-unicode
-      path: modules/zmk/unicod   # Additional modules containing boards/shields/custom code can be listed here as well
-    # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
+      url-base: https://github.com/urob/zmk-unicode
   projects:
     - name: zmk
       remote: zmkfirmware
