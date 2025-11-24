@@ -1,0 +1,86 @@
+#include <dt-bindings/zmk/mouse.h>
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+&mt {
+    flavor = "tap-preferred";
+    tapping_term_ms = <200>;
+};
+
+&mmv {
+    time-to-max-speed-ms = <680>;
+    acceleration-exponent = <2>;
+};
+
+/ {
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+
+        td: tapdance {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAPDANCE";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+&kp Q  &kp W  &kp F           &kp P                             &kp G             &kp J              &kp L            &kp U            &kp Y         &kp SEMICOLON
+&kp A  &kp R  &hm LEFT_ALT S  &hm LEFT_GUI T                    &kp D             &kp H              &hm RIGHT_GUI N  &hm RIGHT_ALT E  &kp I         &kp O
+&kp Z  &kp X  &kp C           &kp V                             &kp B             &kp K              &kp M            &td MINUS COMMA  &td EXCL DOT  &td UNDERSCORE SLASH
+                              &mt LA(LC(LG(LEFT_SHIFT))) SPACE  &sk LEFT_SHIFT    &sk RIGHT_CONTROL  &to 1
+            >;
+        };
+
+        left_layer {
+            bindings = <
+&kp ESC    &kp AT_SIGN  &kp HASH         &kp DLLR          &kp PRCNT     &kp CARET          &kp AMPS            &kp STAR            &kp SEMI  &kp BACKSPACE
+&kp TAB    &kp EQUAL    &hm LEFT_ALT LT  &hm LEFT_GUI GT   &kp SQT       &kp BSLH           &hm RIGHT_GUI LBRC  &hm RIGHT_ALT RBRC  &kp PIPE  &kp ENTER
+&kp TILDE  &kp SPACE    &kp LA(LBKT)     &kp LA(LS(LBKT))  &kp DQT       &kp LBKT           &kp LPAR            &kp RPAR            &kp RBKT  &to 2
+                                         &to 0             &sk LSHIFT    &sk RIGHT_CONTROL  &to 3
+            >;
+        };
+
+        right_layer {
+            bindings = <
+&kp ESC  &kp C_PP      &kp C_PREV            &kp C_NEXT            &kp UNDER    &kp MINUS  &kp N7  &kp N8  &kp N9  &kp BACKSPACE
+&kp TAB  &kp ASTERISK  &kp C_VOL_DN          &kp C_VOL_UP          &kp PLUS     &kp EQUAL  &kp N4  &kp N5  &kp N6  &kp ENTER
+&none    &kp SPACE     &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &kp DOT      &kp N0     &kp N1  &kp N2  &kp N3  &to 3
+                                             &to 0                 &sk LGUI     &sk RALT   &to 2
+            >;
+        };
+
+        Reset {
+            bindings = <
+&trans  &trans  &trans  &trans  &bootloader    &bootloader  &to 4  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans         &trans       &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans         &trans       &trans  &trans  &trans  &trans
+                        &trans  &trans         &trans       &trans
+            >;
+        };
+
+       QWERTY {
+            bindings = <
+&kp Q  &kp W  &kp E          &kp R                              &kp T             &kp Y              &kp U            &kp I            &kp O         &kp P
+&kp A  &kp S  &hm LEFT_ALT D  &hm LEFT_GUI F                    &kp G             &kp H              &hm RIGHT_GUI J  &hm RIGHT_ALT K  &kp L       &kp SEMICOLON
+&kp Z  &kp X  &kp C           &kp V                             &kp B             &kp N              &kp M            &td MINUS COMMA  &td EXCL DOT  &td UNDERSCORE SLASH
+                              &mt LA(LC(LG(LEFT_SHIFT))) SPACE  &sk LEFT_SHIFT    &sk RIGHT_CONTROL  &to 1
+            >;
+        };
+    };
+};
