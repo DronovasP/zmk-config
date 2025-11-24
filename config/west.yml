@@ -2,7 +2,18 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    # Additional modules containing boards/shields/custom code can be listed here as well
+    - name: zmk-adaptive-key
+      path: modules/zmk/adaptive-key
+    - name: zmk-auto-layer
+      path: modules/zmk/auto-layer
+    - name: zmk-helpers
+      path: modules/zmk/helpers
+    - name: zmk-leader-key
+      path: modules/zmk/leader-key
+    - name: zmk-tri-state
+      path: modules/zmk/tri-state
+    - name: zmk-unicode
+      path: modules/zmk/unicod   # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
     - name: zmk
