@@ -33,10 +33,9 @@
     };
 
     /* ================================================================
-     * >>> EDIT ME: matrix pins <<<
-     *
-     * Numbers are the "D" labels printed on the nice!nano / Pro Micro
-     * (D4 = pro_micro 4, D21 = A3 = pro_micro 21, ...).
+     * Matrix pins (as wired, 2026-08-29). pro_micro N = "D" pin number;
+     * the P0.xx / P1.xx comments are the labels silk-screened on the
+     * nice!nano (011 = P0.11, 100 = P1.00, ...).
      * Available for the matrix: 2 3 4 5 6 7 8 9 10 14 15 16 18 19 20 21
      * (0 and 1 are the TRRS UART lines).
      *
@@ -52,20 +51,20 @@
         wakeup-source;
 
         row-gpios
-            = <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* P0.20 - row 0, top (numbers) */
+            , <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* P0.22 - row 1 */
+            , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* P0.24 - row 2 (home) */
+            , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* P1.00 - row 3 */
+            , <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* P0.11 - row 4, bottom / thumb row */
             ;
 
         col-gpios
-            = <&pro_micro 21 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 20 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 19 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 18 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 15 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 14 GPIO_ACTIVE_HIGH>
+            = <&pro_micro 21 GPIO_ACTIVE_HIGH>   /* P0.31 - col 0, outer (pinky) */
+            , <&pro_micro 20 GPIO_ACTIVE_HIGH>   /* P0.29 - col 1 */
+            , <&pro_micro 19 GPIO_ACTIVE_HIGH>   /* P0.02 - col 2 */
+            , <&pro_micro 18 GPIO_ACTIVE_HIGH>   /* P1.15 - col 3 */
+            , <&pro_micro 15 GPIO_ACTIVE_HIGH>   /* P1.13 - col 4 */
+            , <&pro_micro 14 GPIO_ACTIVE_HIGH>   /* P1.11 - col 5, inner (index / first thumb) */
             ;
     };
 

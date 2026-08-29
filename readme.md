@@ -23,19 +23,19 @@ scripts/gen_cosmos_layout.py  regenerates the Studio physical-layout picture
 
 ## Cosmos
 
-### Wiring assumptions (verify against your solder joints)
+### Wiring (pins as reported; row/column *order* still to be confirmed by testing)
 
 Both halves use the same pins. Labels are the `D`-numbers printed on the nice!nano.
 
 | Function | nice!nano pins |
 |---|---|
-| Rows 0→4 (top → bottom/thumb row) | `D4 D5 D6 D7 D8` |
-| Cols 0→5 (outer/pinky → inner/index) | `D21(A3) D20(A2) D19(A1) D18(A0) D15 D14` |
+| Rows 0→4 (top → bottom/thumb row) | `D3 D4 D5 D6 D7` (silkscreen `020 022 024 100 011`) |
+| Cols 0→5 (outer/pinky → inner/index) | `D21 D20 D19 D18 D15 D14` (silkscreen `031 029 002 115 113 111`) |
 | TRRS data | `D1` = TX, `D0` = RX — must be **crossed** between halves (TX↔RX) |
 | TRRS power | VCC + GND (put them on opposite ends of the jack) |
 | Diodes | `col2row` (cathode/bar towards the row) |
 
-All of that lives in **one block** at the top of `boards/shields/cosmos/cosmos.dtsi`, marked `EDIT ME`.
+All of that lives in **one block** at the top of `boards/shields/cosmos/cosmos.dtsi`.
 Wrong key printed → reorder pins there. Nothing printed → try `diode-direction = "row2col"`.
 The bottom row is treated as 2 outer finger keys + 4 thumb keys per half.
 
