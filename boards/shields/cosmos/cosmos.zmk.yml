@@ -1,0 +1,13 @@
+file_format: "1"
+id: cosmos
+name: Cosmos 5x6 (handwired, wired split)
+type: shield
+url: https://ryanis.cool/cosmos/
+requires: [pro_micro]
+exposes: []
+features:
+  - keys
+  - studio
+siblings:
+  - cosmos_left
+  - cosmos_right

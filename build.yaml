@@ -1,24 +1,24 @@
-# This file generates the GitHub Actions matrix.
-# For simple board + shield combinations, add them to the top level board and
-# shield arrays, for more control, add individual board + shield combinations
-# to the `include` property. You can also use the `cmake-args` property to
-# pass flags to the build command, `snippet` to add a Zephyr snippet, and
-# `artifact-name` to assign a name to distinguish build outputs from each other:
-#
-# board: [ "nice_nano_v2" ]
-# shield: [ "corne_left", "corne_right" ]
-# include:
-#   - board: bdn9_rev2
-#   - board: nice_nano_v2
-#     shield: reviung41
-#   - board: nice_nano_v2
-#     shield: corne_left
-#     snippet: studio-rpc-usb-uart
-#     cmake-args: -DCONFIG_ZMK_STUDIO=y
-#     artifact-name: corne_left_with_studio
-#
+# GitHub Actions build matrix. Artifacts land in the "firmware" zip of each run.
 ---
 include:
+  # ---- Cosmos 5x6, handwired, wired split, nice!nano v2 ----
+  # Left = central (USB to PC) and the only half that carries ZMK Studio.
+  - board: nice_nano_v2
+    shield: cosmos_left
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: cosmos_left
+  - board: nice_nano_v2
+    shield: cosmos_right
+    artifact-name: cosmos_right
+
+  # Flash this to wipe stored settings/keymap on a half if Studio edits go wrong.
+  - board: nice_nano_v2
+    shield: settings_reset
+    artifact-name: settings_reset
+
+  # ---- Cradio / Ferris Sweep (old board, BLE split) ----
+  # Both "right central" (_rc) and "left central" (_lc) variants are built.
   - board: nice_nano_v2
     shield: cradio_left
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n

@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: MIT
+
+# Left half is the central: it plugs into the PC over USB and talks to the
+# right half over the TRRS cable (full-duplex UART).
+if SHIELD_COSMOS_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "Cosmos"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_COSMOS_LEFT || SHIELD_COSMOS_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif

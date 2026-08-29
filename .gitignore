@@ -1,0 +1,7 @@
+.DS_Store
+
+# west workspace artifacts (created by CI / local builds, never commit)
+/.west/
+/zmk/
+/modules/
+/build/
