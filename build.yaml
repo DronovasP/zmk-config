@@ -12,6 +12,18 @@ include:
     shield: cosmos_right
     artifact-name: cosmos_right
 
+  # Debug variants: same firmware + USB CDC serial log (read with `tio /dev/ttyACM0`).
+  # Use these to see crash/boot output when a half misbehaves.
+  - board: nice_nano_v2
+    shield: cosmos_left
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_USB_LOGGING=y
+    artifact-name: cosmos_left_debug
+  - board: nice_nano_v2
+    shield: cosmos_right
+    cmake-args: -DCONFIG_ZMK_USB_LOGGING=y
+    artifact-name: cosmos_right_debug
+
   # Flash this to wipe stored settings/keymap on a half if Studio edits go wrong.
   - board: nice_nano_v2
     shield: settings_reset
