@@ -43,12 +43,12 @@ The bottom row is treated as 2 outer finger keys + 4 thumb keys per half.
 
 1. Download the `firmware` artifact from the latest green Actions run and unzip.
 2. Plug a half into the PC, double-tap its reset button → a `NICENANO` drive appears.
-3. Copy `cosmos_left-nice_nano_v2-zmk.uf2` to the left half, `cosmos_right-…uf2` to the right half.
+3. Copy `cosmos_left.uf2` to the left half, `cosmos_right.uf2` to the right half.
    Each half needs to be plugged in over USB to flash (the right one is only powered via TRRS in normal use).
 4. Later you can enter the bootloader from the keymap: hold both layer thumbs (`Sys` layer) and press
    the top-left key (left half) or top-right key (right half).
 
-`settings_reset-…uf2` wipes stored settings/keymap on a half if a Studio edit leaves it in a weird state.
+`settings_reset.uf2` wipes stored settings/keymap on a half if a Studio edit leaves it in a weird state.
 
 Never hot-plug the TRRS cable while a half is powered — the pins are not protected.
 
