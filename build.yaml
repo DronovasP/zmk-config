@@ -25,6 +25,14 @@ include:
     snippet: zmk-usb-logging
     artifact-name: cosmos_right_debug
 
+  # KEY-ORDER TEST: left-half firmware where every key types a unique character
+  # (see config/cosmos_keytest.keymap). Path is where the CI workflow checks
+  # the config out.
+  - board: nice_nano_v2
+    shield: cosmos_left
+    cmake-args: -DKEYMAP_FILE=/tmp/zmk-config/config/cosmos_keytest.keymap
+    artifact-name: cosmos_left_keytest
+
   # Flash this to wipe stored settings/keymap on a half if Studio edits go wrong.
   - board: nice_nano_v2
     shield: settings_reset
