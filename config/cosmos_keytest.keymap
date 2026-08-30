@@ -3,9 +3,9 @@
  * so the physical -> matrix mapping can be verified. Not for daily use.
  *
  * Flash cosmos_left_keytest.uf2, open a text editor, press every key of the
- * half in reading order (top row pinky->index, ..., bottom row: two outer
- * keys then thumbs outer->inner) and paste the result.
- * Correct mapping prints:  123456qwertyasdfghzxcvbn7890-=
+ * half in reading order (top row pinky->index, ..., then the three thumbs
+ * outer->inner) and paste the result.
+ * Correct mapping prints:  123456qwertyasdfghzxcvbn0-=
  */
 
 #include <behaviors.dtsi>
@@ -22,7 +22,7 @@
 &kp Q   &kp W   &kp E   &kp R   &kp T      &kp Y          &kp J      &kp K      &kp L      &kp SEMI   &kp SQT      &kp BSLH
 &kp A   &kp S   &kp D   &kp F   &kp G      &kp H          &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp GRAVE    &kp KP_N1
 &kp Z   &kp X   &kp C   &kp V   &kp B      &kp N          &kp KP_N2  &kp KP_N3  &kp KP_N4  &kp KP_N5  &kp KP_N6    &kp KP_N7
-&kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS  &kp EQUAL      &kp KP_N8  &kp KP_N9  &kp KP_N0  &kp KP_DOT &kp KP_PLUS  &kp KP_MINUS
+                        &kp N0  &kp MINUS  &kp EQUAL      &kp KP_N8  &kp KP_N9  &kp KP_N0
             >;
         };
     };

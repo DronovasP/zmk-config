@@ -4,7 +4,7 @@ ZMK firmware for two keyboards, built on GitHub Actions (every push → *Actions
 
 | Keyboard | Shield | Controller | Link between halves | Host |
 |---|---|---|---|---|
-| **Cosmos 5x6** (handwired, 30 keys/half) | `cosmos_left` / `cosmos_right` | nice!nano v2 | wired, TRRS (full-duplex UART) | USB into the **left** half |
+| **Cosmos** (handwired, 4x6 + 3 thumbs = 27 keys/half) | `cosmos_left` / `cosmos_right` | nice!nano v2 | wired, TRRS (full-duplex UART) | USB into the **left** half |
 | Cradio / Ferris Sweep (34 keys) | `cradio_left` / `cradio_right` | nice!nano v2 | BLE | BLE/USB, `_lc`/`_rc` variants |
 
 ZMK is pinned to the `v0.3` line in `config/west.yml` and `.github/workflows/build.yml` — keep those two in sync.
@@ -29,7 +29,7 @@ Both halves use the same pins. Labels are the `D`-numbers printed on the nice!na
 
 | Function | nice!nano pins |
 |---|---|
-| Rows 0→4 (top → bottom/thumb row) | `D3 D4 D5 D6 D7` (silkscreen `020 022 024 100 011`) |
+| Rows 0→4 (top → thumb row) | `D3 D4 D5 D6 D7` (silkscreen `020 022 024 100 011`) |
 | Cols 0→5 (outer/pinky → inner/index) | `D21 D20 D19 D18 D15 D14` (silkscreen `031 029 002 115 113 111`) |
 | TRRS data | `D1` = TX, `D0` = RX — must be **crossed** between halves (TX↔RX) |
 | TRRS power | VCC + GND (put them on opposite ends of the jack) |
@@ -37,7 +37,7 @@ Both halves use the same pins. Labels are the `D`-numbers printed on the nice!na
 
 All of that lives in **one block** at the top of `boards/shields/cosmos/cosmos.dtsi`.
 Wrong key printed → reorder pins there. Nothing printed → try `diode-direction = "row2col"`.
-The bottom row is treated as 2 outer finger keys + 4 thumb keys per half.
+Row 4 of the matrix only has the three thumb keys (columns 3-5); verified by key test on 2026-08-30.
 
 ### Flashing
 
@@ -47,6 +47,8 @@ The bottom row is treated as 2 outer finger keys + 4 thumb keys per half.
    Each half needs to be plugged in over USB to flash (the right one is only powered via TRRS in normal use).
 4. Later you can enter the bootloader from the keymap: hold both layer thumbs (`Sys` layer) and press
    the top-left key (left half) or top-right key (right half).
+   To re-verify the wiring, flash `cosmos_left_keytest.uf2` (every key types a unique character;
+   expected in reading order: `123456qwertyasdfghzxcvbn0-=`).
 
 `settings_reset.uf2` wipes stored settings/keymap on a half if a Studio edit leaves it in a weird state.
 
@@ -56,9 +58,9 @@ Never hot-plug the TRRS cable while a half is powered — the pins are not prote
 
 Plain QWERTY, no hold-taps on the base layer (gaming-safe).
 
-- `Base` — QWERTY; thumbs: `LALT · Nav · Space · Bksp` | `Enter · Sym · Del · RAlt`
-- `Nav` (hold left inner-ish thumb) — F1-F12, arrows/home/end/pgup/pgdn on the right hand, media, Caps
-- `Sym/Num` (hold right thumb) — shifted symbols on the top row, numpad on the right hand
+- `Base` — QWERTY; outer column top→bottom `Esc Tab Ctrl Shift`; thumbs `Alt · Nav · Space` | `Enter · Sym · Bksp`
+- `Nav` (hold left middle thumb) — F1-F12, arrows/home/end/pgup/pgdn on the right hand, media, Caps, Super (Ctrl position), Del/RAlt on right thumbs
+- `Sym/Num` (hold right middle thumb) — `` ` `` + shifted symbols on the top row, numpad and `[ ] { } \ |` on the right hand, Super (Ctrl position)
 - `Sys` (Nav + Sym together) — `&bootloader`, `&sys_reset`, `&studio_unlock`
 
 ### ZMK Studio
